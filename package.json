@@ -1,6 +1,6 @@
 {
   "name": "console-log-json",
-  "version": "2.5.2",
+  "version": "0.0.0",
   "description": "find duplicate images",
   "private": false,
   "types": "./dist/index.d.ts",
