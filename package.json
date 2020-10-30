@@ -65,6 +65,7 @@
     "chai": "^4.2.0",
     "create-ts-index": "^1.13.6",
     "eslint": "^7.12.1",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-unicorn": "^23.0.0",
     "husky": "^4.3.0",
     "mocha": "^8.2.0",

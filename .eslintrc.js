@@ -6,6 +6,7 @@ module.exports = {
     "project": ['./tsconfig.json'],
     "createDefaultProgram": true
   },
+  extends: ["eslint-config-prettier"],
   rules: {
     "@typescript-eslint/no-floating-promises": ["error", { "ignoreVoid": true }],
     "@typescript-eslint/no-unused-vars": ["error", {
