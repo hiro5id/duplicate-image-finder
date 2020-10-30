@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
-console.log("hi");
+import { Main } from "./main";
 
-export class foo {}
+const main = new Main();
+main
+  .go()
+  .then(() => {
+    console.log("done");
+  })
+  .catch((err) => console.error(`error ${err.message}`));

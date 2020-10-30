@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hiro5id/console-log-json.git"
+    "url": "git@github.com:hiro5id/duplicate-image-finder.git"
   },
   "files": [
     "dist/**/*"
