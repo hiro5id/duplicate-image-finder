@@ -41,7 +41,7 @@
     "install:prod": "npm ci",
     "prune:prod": "npm prune --production",
     "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
-    "publish": "np",
+    "np-publish": "np",
     "dev-install-command": "npm link",
     "dev-uninstall-command": "npm unlink"
   },
