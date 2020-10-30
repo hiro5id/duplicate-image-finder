@@ -3,8 +3,8 @@
   "version": "2.5.2",
   "description": "find duplicate images",
   "private": false,
-  "types": "dist/index.d.ts",
-  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/src/cli.js",
   "license": "MIT",
   "engines": {
     "node": ">=10.13",
