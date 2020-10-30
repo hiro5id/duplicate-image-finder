@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { Main } from "./main";
+import { Main } from './main';
 
 const main = new Main();
 main
   .go()
   .then(() => {
-    console.log("done");
+    console.log('done');
   })
-  .catch((err) => console.error(`error ${err.message}`));
+  .catch(err => console.error(`error ${err.message}`));

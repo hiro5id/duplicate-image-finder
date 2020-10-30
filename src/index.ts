@@ -1,4 +1,4 @@
 // created from 'create-ts-index'
 
-export * from "./cli";
-export * from "./main";
+export * from './cli';
+export * from './main';

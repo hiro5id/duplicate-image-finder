@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "prebuild": "echo 'runnign create-ts-index' && cti --withoutbackup create ./src && rimraf **/index.ts.bak",
-    "build": "npm run build:tsc && npm run lint:fix",
+    "build": "npm run build:tsc",
     "build:tsc": "rimraf ./dist && tsc -sourcemap",
     "build:watch": "npm run build:tsc -- -w",
     "lint": "npm run prettier:check && npm run eslint",

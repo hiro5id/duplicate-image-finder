@@ -1,5 +1,5 @@
-describe("dummy", function () {
-  it("dummy", async function () {
-    console.log("done test");
+describe('dummy', function () {
+  it('dummy', async function () {
+    console.log('done test');
   });
 });
