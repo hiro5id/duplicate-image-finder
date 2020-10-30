@@ -42,8 +42,8 @@
     "prune:prod": "npm prune --production",
     "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
     "publish": "np",
-    "dev-install-commandline": "npm link",
-    "dev-uninstall-commandline": "npm unlink"
+    "dev-install-command": "npm link",
+    "dev-uninstall-command": "npm unlink"
   },
   "bin": {
     "find-dupes": "./dist/src/cli.js"

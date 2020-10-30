@@ -11,10 +11,12 @@ out-tsc/
 # dependencies
 node_modules/
 
-# WebStorm
+# webstorm project settings
 /.idea/workspace.xml
 /.idea/tasks.xml
 /.idea/usage.statistics.xml
+# /.idea/shelf
+
 
 # IDE - VSCode
 .vscode/*
@@ -35,4 +37,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-.idea/shelf
