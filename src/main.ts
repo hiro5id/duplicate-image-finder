@@ -2,6 +2,8 @@ import path from 'path';
 import readdirp from 'readdirp';
 import os from 'os';
 import { Writable } from 'typed-streams';
+import FileType from 'file-type';
+import fs from 'fs';
 
 /*
   writing cross platform paths:
@@ -12,9 +14,9 @@ import { Writable } from 'typed-streams';
  */
 export class Main {
   async go() {
-    const inputPath = '~/dev';
+    const inputPath = '~/Pictures';
     const startPath = resolvePathCrossPlatform(inputPath);
-    readdirp(startPath, { type: 'files' }).pipe(new FileProcessor());
+    await readdirp(startPath, { type: 'files' }).pipe(new FileProcessor()).toPromiseFinish();
 
     // for await (const entry of readdirp(startPath,{type: 'files'})) {
     //   console.log(`${c.blue(entry.path)}`);
@@ -44,7 +46,16 @@ export class FileProcessor extends Writable<readdirp.EntryInfo> {
   }
 
   _writeEx(chunk: readdirp.EntryInfo, _encoding: string, callback: (error?: Error | null) => void) {
-    console.log(chunk.fullPath);
-    callback();
+    const stream = fs.createReadStream(chunk.fullPath);
+    FileType.fromStream(stream)
+      .then((res: any) => {
+        if (res != null && res.mime.startsWith('image')) {
+          console.log(chunk.path, ' ', res.mime);
+        }
+        callback();
+      })
+      .catch(err => {
+        callback(err);
+      });
   }
 }
