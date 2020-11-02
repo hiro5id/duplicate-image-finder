@@ -46,7 +46,7 @@
     "dev-uninstall-command": "npm unlink"
   },
   "bin": {
-    "find-dupes": "./dist/src/cli.js"
+    "iker": "./dist/src/cli.js"
   },
   "husky": {
     "hooks": {
