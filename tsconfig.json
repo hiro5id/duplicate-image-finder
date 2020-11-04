@@ -15,11 +15,11 @@
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
 
-    "lib": ["es2020", "dom"],
+    "lib": ["es2019", "dom"],
     "rootDir": ".",
-    "module": "commonjs", // Use commonjs for compatibility
+    "module": "CommonJS", // Use commonjs for compatibility
     "moduleResolution": "node",
-    "target": "es2020",
+    "target": "es2019",
     "outDir": "dist", // The javascript will be compiled to this folder.
     "sourceMap": true,
     "declaration": true, // To share typescript across modules, Typescript will then also export type definitions together with the compiled javascript code so the package can be used with both Typescript and Javascript.

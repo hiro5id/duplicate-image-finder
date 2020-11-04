@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
+    "dhash-image": "github:hiro5id/dhash-image",
     "file-type": "^16.0.0",
     "readdirp": "^3.5.0",
     "typed-streams": "^1.5.0"
