@@ -56,9 +56,9 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "dhash-image": "github:hiro5id/dhash-image",
-    "file-type": "^16.0.0",
+    "file-type": "^16.0.1",
     "readdirp": "^3.5.0",
-    "typed-streams": "^1.5.0"
+    "typed-streams": "^1.6.2"
   },
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
@@ -66,15 +66,16 @@
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.14.2",
     "@types/rimraf": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.6.0",
-    "@typescript-eslint/parser": "^4.6.0",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
     "chai": "^4.2.0",
+    "check-outdated": "^2.4.1",
     "create-ts-index": "^1.13.6",
-    "eslint": "^7.12.1",
+    "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-unicorn": "^23.0.0",
     "husky": "^4.3.0",
-    "mocha": "^8.2.0",
+    "mocha": "^8.2.1",
     "np": "^7.0.0",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
