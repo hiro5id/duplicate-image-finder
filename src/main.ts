@@ -1,7 +1,7 @@
 import path from 'path';
 import readdirp from 'readdirp';
 import os from 'os';
-import { Writable } from 'typed-streams';
+import { Writable, Transform } from 'typed-streams';
 import FileType from 'file-type';
 import fs from 'fs';
 
@@ -15,7 +15,7 @@ import fs from 'fs';
 export class Main {
   async go() {
     const inputPath = '~/Pictures';
-    const startPath = resolvePathCrossPlatform(inputPath);
+    const startPath = resolvePath(inputPath);
     await readdirp(startPath, { type: 'files' }).pipe(new FileProcessor()).toPromiseFinish();
 
     // for await (const entry of readdirp(startPath,{type: 'files'})) {
@@ -24,7 +24,7 @@ export class Main {
   }
 }
 
-function resolvePathCrossPlatform(pathToCheck: string) {
+function resolvePath(pathToCheck: string) {
   let resolvedPath: string;
   if (pathToCheck.startsWith('~')) {
     const homedir = os.homedir();
@@ -37,6 +37,17 @@ function resolvePathCrossPlatform(pathToCheck: string) {
   resolvedPath = path.normalize(resolvedPath);
 
   return resolvedPath;
+}
+
+export class FileAttributesExtractor extends Transform<readdirp.EntryInfo, string> {
+  name: string = FileAttributesExtractor.name;
+  constructor() {
+    super({ objectMode: true });
+  }
+
+  // I should be able to implement _transformEx here.  But auto-complete does not offer that to me
+  // I tried "implement members" command, but getting error "no members to implement found"
+  // Looking at Transform class, there is clearly a _transformEx I should be able to implement here
 }
 
 export class FileProcessor extends Writable<readdirp.EntryInfo> {
