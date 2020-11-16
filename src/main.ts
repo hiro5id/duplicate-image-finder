@@ -1,9 +1,13 @@
 import path from 'path';
 import readdirp from 'readdirp';
 import os from 'os';
-import { Writable, Transform } from 'typed-streams';
+import { Writable } from 'typed-streams';
 import FileType from 'file-type';
 import fs from 'fs';
+import { FileAttributesExtractor } from './file-attributes-extractor';
+import { FileTypeExtractor } from './file-type-extractor';
+import { FilterOnlyImageFiles } from './filter-only-image-files';
+import { FileDhashCalculatorV1 } from './file-dhash-calculator-v1';
 
 /*
   writing cross platform paths:
@@ -16,7 +20,13 @@ export class Main {
   async go() {
     const inputPath = '~/Pictures';
     const startPath = resolvePath(inputPath);
-    await readdirp(startPath, { type: 'files' }).pipe(new FileProcessor()).toPromiseFinish();
+    // await readdirp(startPath, { type: 'files' }).pipe(new FileProcessor()).toPromiseFinish();
+    await readdirp(startPath, { type: 'files' })
+      .pipe(new FileAttributesExtractor())
+      .pipe(new FileTypeExtractor())
+      .pipe(new FilterOnlyImageFiles())
+      .pipe(new FileDhashCalculatorV1())
+      .toPromiseFinish();
 
     // for await (const entry of readdirp(startPath,{type: 'files'})) {
     //   console.log(`${c.blue(entry.path)}`);
@@ -37,17 +47,6 @@ function resolvePath(pathToCheck: string) {
   resolvedPath = path.normalize(resolvedPath);
 
   return resolvedPath;
-}
-
-export class FileAttributesExtractor extends Transform<readdirp.EntryInfo, string> {
-  name: string = FileAttributesExtractor.name;
-  constructor() {
-    super({ objectMode: true });
-  }
-
-  // I should be able to implement _transformEx here.  But auto-complete does not offer that to me
-  // I tried "implement members" command, but getting error "no members to implement found"
-  // Looking at Transform class, there is clearly a _transformEx I should be able to implement here
 }
 
 export class FileProcessor extends Writable<readdirp.EntryInfo> {
