@@ -8,7 +8,9 @@ import { FileAttributesExtractor } from './file-attributes-extractor';
 import { FileTypeExtractor } from './file-type-extractor';
 import { FilterOnlyImageFiles } from './filter-only-image-files';
 import { FileDhashCalculatorV1 } from './file-dhash-calculator-v1';
+import { LoggerAdaptToConsole } from 'console-log-json';
 
+LoggerAdaptToConsole();
 /*
   writing cross platform paths:
   https://shapeshed.com/writing-cross-platform-node/

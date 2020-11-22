@@ -13,7 +13,10 @@ export class FileTypeExtractor extends Transform<FileAttributes, FileAttributesW
   _transformEx(chunk: FileAttributes, encoding: BufferEncoding, callback: (error?: Error | null, data?: any) => void) {
     this.getFileType(chunk, encoding)
       .then(() => callback())
-      .catch(err => callback(err));
+      .catch(err => {
+        console.log(`error in ${this.name}`, err);
+        callback(err);
+      });
   }
 
   private async getFileType(chunk: FileAttributes, encoding: BufferEncoding) {

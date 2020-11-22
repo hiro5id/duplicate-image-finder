@@ -9,9 +9,14 @@ export class FilterOnlyImageFiles extends Transform<FileAttributesWithType, File
   }
 
   _transformEx(chunk: FileAttributesWithType, encoding: BufferEncoding, callback: (error?: Error | null, data?: any) => void) {
-    if (chunk?.fileMimeType != null && chunk.fileMimeType.startsWith('image')) {
-      this.push(chunk, encoding);
+    try {
+      if (chunk?.fileMimeType != null && chunk.fileMimeType.startsWith('image')) {
+        this.push(chunk, encoding);
+      }
+      callback();
+    } catch (err) {
+      console.log(`error in ${this.name}`, err);
+      callback(err);
     }
-    callback();
   }
 }

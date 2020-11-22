@@ -12,7 +12,10 @@ export class FileAttributesExtractor extends Transform<readdirp.EntryInfo, FileA
   _transformEx(chunk: readdirp.EntryInfo, encoding: BufferEncoding, callback: (error?: Error | null, data?: any) => void) {
     this.buildAttributes(chunk, encoding)
       .then(() => callback())
-      .catch(err => callback(err));
+      .catch(err => {
+        console.log(`error in ${this.name}`, err);
+        callback(err);
+      });
   }
 
   private async buildAttributes(chunk: readdirp.EntryInfo, encoding: BufferEncoding) {

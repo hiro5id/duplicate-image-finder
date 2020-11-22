@@ -55,8 +55,10 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
+    "console-log-json": "^2.5.3",
     "dhash-image": "github:hiro5id/dhash-image",
     "file-type": "^16.0.1",
+    "heic-convert": "^1.2.3",
     "readdirp": "^3.5.0",
     "typed-streams": "^1.6.2"
   },

@@ -1,7 +1,12 @@
 import { Transform } from 'typed-streams';
 import { FileAttributesWithType, FileAttributesWithTypeAndHash } from './file-attributes-extractor.interface';
 import { Hash } from './hash.interface';
+import { promisify } from 'util';
+import * as fs from 'fs';
+import * as os from 'os';
+import path from 'path';
 const dhash = require('dhash-image');
+const convert = require('heic-convert');
 
 export class FileDhashCalculatorV1 extends Transform<FileAttributesWithType, FileAttributesWithTypeAndHash> {
   readonly name: string = FileDhashCalculatorV1.name;
@@ -13,12 +18,32 @@ export class FileDhashCalculatorV1 extends Transform<FileAttributesWithType, Fil
   _transformEx(chunk: FileAttributesWithType, encoding: BufferEncoding, callback: (error?: Error | null, data?: any) => void) {
     this.calculateHash(chunk, encoding)
       .then(() => callback())
-      .catch(err => callback(err));
+      .catch(err => {
+        console.log(`error in ${this.name}`, err);
+        callback(err);
+      });
   }
 
   private async calculateHash(chunk: FileAttributesWithType, encoding: BufferEncoding) {
-    //todo: we need to convert HEIC files to Jpg to be able to calculate the hash for it: https://www.npmjs.com/package/heic-convert
-    const dhashv1 = await this.calcDhashv1(chunk.fullPath);
+    let filePathToCalcHash: string;
+    let cleanupTmpFile: string | null = null;
+    //we need to convert HEIC files to Jpg to be able to calculate the hash for it: https://www.npmjs.com/package/heic-convert
+    if (chunk.fileMimeType?.toUpperCase().includes('HEIC')) {
+      const inputBuffer = await promisify(fs.readFile)(chunk.fullPath);
+      const outputBuffer = await convert({
+        buffer: inputBuffer, // the HEIC file buffer
+        format: 'PNG', // output format
+      });
+      const tmpdir = os.tmpdir();
+      const tmpFile = path.join(tmpdir, 'dif-tmp.png');
+      await promisify(fs.writeFile)(tmpFile, outputBuffer);
+      filePathToCalcHash = tmpFile;
+      cleanupTmpFile = tmpFile;
+    } else {
+      filePathToCalcHash = chunk.fullPath;
+    }
+
+    const dhashv1 = await this.calcDhashv1(filePathToCalcHash);
     const dhashBinaryV1 = this.getBinaryString(dhashv1);
 
     const calculatedHash = {
@@ -28,6 +53,11 @@ export class FileDhashCalculatorV1 extends Transform<FileAttributesWithType, Fil
     } as Hash;
 
     this.push({ ...chunk, ...{ hash: calculatedHash } }, encoding);
+
+    console.log(chunk.fileName, ' ', calculatedHash.binaryHash);
+    if (cleanupTmpFile != null) {
+      void promisify(fs.unlink)(cleanupTmpFile);
+    }
   }
 
   private calcDhashv1(file: string) {
