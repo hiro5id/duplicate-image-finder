@@ -35,6 +35,8 @@ export class Main {
       // do the output processing:
       // dump duplicate files to designated folder
       // dump extracted files to designated folder
+
+      // NOTE: we need a writer that's why this pipeline won't finish
       .toPromiseFinish();
 
     // for await (const entry of readdirp(startPath,{type: 'files'})) {
@@ -63,13 +65,15 @@ export class FileProcessor extends Writable<readdirp.EntryInfo> {
   constructor() {
     super({ objectMode: true });
   }
+  private count = 0;
 
   _writeEx(chunk: readdirp.EntryInfo, _encoding: string, callback: (error?: Error | null) => void) {
     const stream = fs.createReadStream(chunk.fullPath);
     FileType.fromStream(stream)
       .then((res: any) => {
         if (res != null && res.mime.startsWith('image')) {
-          console.log(chunk.path, ' ', res.mime);
+          this.count += 1;
+          console.log(chunk.path, res.mime, this.count);
         }
         callback();
       })
