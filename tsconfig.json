@@ -15,8 +15,8 @@
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
 
-    "lib": ["es2019", "dom"],
-    "rootDir": ".",
+    // "lib": ["es2019", "dom"],
+    // "types": ["reflect-metadata"],
     "module": "CommonJS", // Use commonjs for compatibility
     "moduleResolution": "node",
     "target": "es2019",

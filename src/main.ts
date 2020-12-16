@@ -4,11 +4,12 @@ import os from 'os';
 import { Writable } from 'typed-streams';
 import FileType from 'file-type';
 import fs from 'fs';
-import { FileAttributesExtractor } from './file-attributes-extractor';
-import { FileTypeExtractor } from './file-type-extractor';
+import { ExtractFileAttributes } from './extract-file-attributes';
+import { ExtractFileType } from './extract-file-type';
 import { FilterOnlyImageFiles } from './filter-only-image-files';
-import { FileDhashCalculatorV1 } from './file-dhash-calculator-v1';
+import { CalculateDhashV1 } from './calculate-dhash-v1';
 import { LoggerAdaptToConsole } from 'console-log-json';
+import { compositionRoot } from './composition-root';
 
 LoggerAdaptToConsole();
 /*
@@ -20,14 +21,20 @@ LoggerAdaptToConsole();
  */
 export class Main {
   async go() {
+    const container = compositionRoot();
+
     const inputPath = '~/Pictures';
     const startPath = resolvePath(inputPath);
     // await readdirp(startPath, { type: 'files' }).pipe(new FileProcessor()).toPromiseFinish();
     await readdirp(startPath, { type: 'files' })
-      .pipe(new FileAttributesExtractor())
-      .pipe(new FileTypeExtractor())
-      .pipe(new FilterOnlyImageFiles())
-      .pipe(new FileDhashCalculatorV1())
+      .pipe(container.get(ExtractFileAttributes))
+      .pipe(container.get(ExtractFileType))
+      .pipe(container.get(FilterOnlyImageFiles))
+      .pipe(container.get(CalculateDhashV1))
+      // write metadata to metadataDB
+      // do the output processing:
+      // dump duplicate files to designated folder
+      // dump extracted files to designated folder
       .toPromiseFinish();
 
     // for await (const entry of readdirp(startPath,{type: 'files'})) {

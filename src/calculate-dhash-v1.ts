@@ -5,14 +5,17 @@ import { promisify } from 'util';
 import * as fs from 'fs';
 import * as os from 'os';
 import path from 'path';
+import crypto from 'crypto';
+import { inject, injectable } from './ioc-container';
 const dhash = require('dhash-image');
 const convert = require('heic-convert');
 
-export class FileDhashCalculatorV1 extends Transform<FileAttributesWithType, FileAttributesWithTypeAndHash> {
-  readonly name: string = FileDhashCalculatorV1.name;
+@injectable()
+export class CalculateDhashV1 extends Transform<FileAttributesWithType, FileAttributesWithTypeAndHash> {
+  readonly name: string = CalculateDhashV1.name;
 
-  constructor() {
-    super({ objectMode: true });
+  constructor(@inject('objectMode') opts: {}) {
+    super(opts);
   }
 
   _transformEx(chunk: FileAttributesWithType, encoding: BufferEncoding, callback: (error?: Error | null, data?: any) => void) {
@@ -35,7 +38,8 @@ export class FileDhashCalculatorV1 extends Transform<FileAttributesWithType, Fil
         format: 'PNG', // output format
       });
       const tmpdir = os.tmpdir();
-      const tmpFile = path.join(tmpdir, 'dif-tmp.png');
+      const randomString = crypto.randomBytes(5).toString('hex');
+      const tmpFile = path.join(tmpdir, `dif-${randomString}-tmp.png`);
       await promisify(fs.writeFile)(tmpFile, outputBuffer);
       filePathToCalcHash = tmpFile;
       cleanupTmpFile = tmpFile;
@@ -54,7 +58,7 @@ export class FileDhashCalculatorV1 extends Transform<FileAttributesWithType, Fil
 
     this.push({ ...chunk, ...{ hash: calculatedHash } }, encoding);
 
-    console.log(chunk.fileName, ' ', calculatedHash.binaryHash);
+    console.log('calculated signature: ', chunk.fileName, calculatedHash.binaryHash, chunk.pathInSearchDir);
     if (cleanupTmpFile != null) {
       void promisify(fs.unlink)(cleanupTmpFile);
     }

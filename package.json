@@ -59,7 +59,10 @@
     "dhash-image": "github:hiro5id/dhash-image",
     "file-type": "^16.0.1",
     "heic-convert": "^1.2.3",
+    "inversify": "^5.0.1",
+    "inversify-binding-decorators": "^4.0.0",
     "readdirp": "^3.5.0",
+    "reflect-metadata": "^0.1.13",
     "typed-streams": "^1.6.2"
   },
   "devDependencies": {

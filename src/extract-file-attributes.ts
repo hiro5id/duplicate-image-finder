@@ -1,12 +1,14 @@
 import { Transform } from 'typed-streams';
 import readdirp from 'readdirp';
 import { FileAttributes } from './file-attributes-extractor.interface';
+import { inject, injectable } from './ioc-container';
 
-export class FileAttributesExtractor extends Transform<readdirp.EntryInfo, FileAttributes> {
-  name: string = FileAttributesExtractor.name;
+@injectable()
+export class ExtractFileAttributes extends Transform<readdirp.EntryInfo, FileAttributes> {
+  name: string = ExtractFileAttributes.name;
 
-  constructor() {
-    super({ objectMode: true });
+  constructor(@inject('objectMode') opts: {}) {
+    super(opts);
   }
 
   _transformEx(chunk: readdirp.EntryInfo, encoding: BufferEncoding, callback: (error?: Error | null, data?: any) => void) {
@@ -18,12 +20,17 @@ export class FileAttributesExtractor extends Transform<readdirp.EntryInfo, FileA
       });
   }
 
+  private count = 0;
+
   private async buildAttributes(chunk: readdirp.EntryInfo, encoding: BufferEncoding) {
     const fileAttributes: FileAttributes = {
       fullPath: chunk.fullPath,
       pathInSearchDir: chunk.path,
       fileName: chunk.dirent?.name || '',
     };
+
+    this.count += 1;
+    console.log(`file count ${this.count}`, fileAttributes.fileName);
 
     // const dhashv1 = await calcDhashv1(fileAttributes.fullPath)
     // const dhashBinaryV1 = getBinaryString(dhashv1);
