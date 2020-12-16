@@ -37,6 +37,7 @@ export class Main {
       // dump extracted files to designated folder
 
       // NOTE: we need a writer that's why this pipeline won't finish
+      // .pipe(new DummyWriter())
       .toPromiseFinish();
 
     // for await (const entry of readdirp(startPath,{type: 'files'})) {
@@ -58,6 +59,18 @@ function resolvePath(pathToCheck: string) {
   resolvedPath = path.normalize(resolvedPath);
 
   return resolvedPath;
+}
+
+export class DummyWriter extends Writable<any> {
+  readonly name: string = DummyWriter.name;
+  constructor() {
+    super({ objectMode: true });
+  }
+
+  _writeEx(chunk: any, _encoding: BufferEncoding, callback: (error?: Error | null) => void) {
+    console.log(`dummy writer:`, chunk);
+    callback();
+  }
 }
 
 export class FileProcessor extends Writable<readdirp.EntryInfo> {
