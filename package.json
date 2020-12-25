@@ -22,10 +22,11 @@
     "duplicate"
   ],
   "scripts": {
-    "prebuild": "echo 'runnign create-ts-index' && cti --withoutbackup create ./src && rimraf **/index.ts.bak",
+    "prebuild": "echo 'runnign create-ts-index' && cti --excludes schemas --withoutbackup create ./src && rimraf **/index.ts.bak",
     "build": "npm run build:tsc",
-    "build:tsc": "rimraf ./dist && tsc -sourcemap",
+    "build:tsc": "rimraf ./dist && tsc -sourcemap && npm run generate:schema-1",
     "build:watch": "npm run build:tsc -- -w",
+    "generate:schema-1": "typescript-json-schema ./tsconfig.json ImageMetadata --required --out ./src/schemas/image-metadata.json",
     "lint:check": "npm run prettier:check && npm run eslint",
     "lint:fix": "npm run prettier:fix",
     "eslint": "eslint --ignore-path .eslintignore . --ext .ts",
@@ -54,6 +55,7 @@
     }
   },
   "dependencies": {
+    "ajv": "^7.0.2",
     "chalk": "^4.1.0",
     "console-log-json": "^2.5.3",
     "dhash-image": "github:hiro5id/dhash-image",
@@ -63,7 +65,8 @@
     "inversify-binding-decorators": "^4.0.0",
     "readdirp": "^3.5.0",
     "reflect-metadata": "^0.1.13",
-    "typed-streams": "^1.6.2"
+    "typed-streams": "^1.6.2",
+    "typescript-json-schema": "^0.46.0"
   },
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",

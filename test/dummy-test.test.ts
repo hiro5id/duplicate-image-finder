@@ -16,7 +16,7 @@ function getBinaryString(result: any) {
   return binaryStringArray.join('');
 }
 
-describe('dummy', function () {
+xdescribe('dummy', function () {
   this.timeout(99999999);
 
   it('dummy', async function () {

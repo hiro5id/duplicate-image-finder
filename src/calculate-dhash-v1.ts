@@ -7,6 +7,7 @@ import * as os from 'os';
 import path from 'path';
 import crypto from 'crypto';
 import { inject, injectable } from './ioc-container';
+
 const dhash = require('dhash-image');
 const convert = require('heic-convert');
 

@@ -10,6 +10,7 @@ import { FilterOnlyImageFiles } from './filter-only-image-files';
 import { CalculateDhashV1 } from './calculate-dhash-v1';
 import { LoggerAdaptToConsole } from 'console-log-json';
 import { compositionRoot } from './composition-root';
+import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
 
 LoggerAdaptToConsole();
 /*
@@ -22,6 +23,10 @@ LoggerAdaptToConsole();
 export class Main {
   async go() {
     const container = compositionRoot();
+
+    //todo: remove this
+    container.get(SaveToMetadatDbTransform);
+    return;
 
     const inputPath = '~/Pictures';
     const startPath = resolvePath(inputPath);

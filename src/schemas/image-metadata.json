@@ -1,0 +1,184 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Hash": {
+            "properties": {
+                "binaryHash": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "dhash"
+                    ],
+                    "type": "string"
+                },
+                "version": {
+                    "enum": [
+                        "v1"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "binaryHash",
+                "type",
+                "version"
+            ],
+            "type": "object"
+        }
+    },
+    "properties": {
+        "fileMimeType": {
+            "enum": [
+                "application/dicom",
+                "application/eps",
+                "application/epub+zip",
+                "application/gzip",
+                "application/mxf",
+                "application/ogg",
+                "application/pdf",
+                "application/pgp-encrypted",
+                "application/postscript",
+                "application/rtf",
+                "application/vnd.ms-asf",
+                "application/vnd.ms-cab-compressed",
+                "application/vnd.ms-fontobject",
+                "application/vnd.oasis.opendocument.presentation",
+                "application/vnd.oasis.opendocument.spreadsheet",
+                "application/vnd.oasis.opendocument.text",
+                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "application/vnd.sketchup.skp",
+                "application/vnd.tcpdump.pcap",
+                "application/wasm",
+                "application/x-7z-compressed",
+                "application/x-apache-arrow",
+                "application/x-apple-diskimage",
+                "application/x-asar",
+                "application/x-blender",
+                "application/x-bzip2",
+                "application/x-cfb",
+                "application/x-compress",
+                "application/x-deb",
+                "application/x-esri-shape",
+                "application/x-google-chrome-extension",
+                "application/x-indesign",
+                "application/x-lzh-compressed",
+                "application/x-lzip",
+                "application/x-mie",
+                "application/x-mobipocket-ebook",
+                "application/x-msdownload",
+                "application/x-nintendo-nes-rom",
+                "application/x-rar-compressed",
+                "application/x-rpm",
+                "application/x-shockwave-flash",
+                "application/x-sqlite3",
+                "application/x-tar",
+                "application/x-unix-archive",
+                "application/x-xpinstall",
+                "application/x-xz",
+                "application/x.apple.alias",
+                "application/x.ms.shortcut",
+                "application/xml",
+                "application/zip",
+                "audio/aac",
+                "audio/aiff",
+                "audio/amr",
+                "audio/ape",
+                "audio/midi",
+                "audio/mp4",
+                "audio/mpeg",
+                "audio/ogg",
+                "audio/opus",
+                "audio/qcelp",
+                "audio/vnd.dolby.dd-raw",
+                "audio/vnd.wave",
+                "audio/wavpack",
+                "audio/x-dsf",
+                "audio/x-flac",
+                "audio/x-it",
+                "audio/x-m4a",
+                "audio/x-ms-asf",
+                "audio/x-musepack",
+                "audio/x-s3m",
+                "audio/x-voc",
+                "audio/x-xm",
+                "font/otf",
+                "font/ttf",
+                "font/woff",
+                "font/woff2",
+                "image/apng",
+                "image/avif",
+                "image/bmp",
+                "image/bpg",
+                "image/flif",
+                "image/gif",
+                "image/heic",
+                "image/heic-sequence",
+                "image/heif",
+                "image/heif-sequence",
+                "image/icns",
+                "image/jp2",
+                "image/jpeg",
+                "image/jpm",
+                "image/jpx",
+                "image/ktx",
+                "image/mj2",
+                "image/png",
+                "image/tiff",
+                "image/vnd.adobe.photoshop",
+                "image/vnd.ms-photo",
+                "image/webp",
+                "image/x-adobe-dng",
+                "image/x-canon-cr2",
+                "image/x-canon-cr3",
+                "image/x-fujifilm-raf",
+                "image/x-icon",
+                "image/x-nikon-nef",
+                "image/x-olympus-orf",
+                "image/x-panasonic-rw2",
+                "image/x-sony-arw",
+                "model/gltf-binary",
+                "model/stl",
+                "text/calendar",
+                "video/3gpp",
+                "video/3gpp2",
+                "video/MP1S",
+                "video/MP2P",
+                "video/mp2t",
+                "video/mp4",
+                "video/mpeg",
+                "video/ogg",
+                "video/quicktime",
+                "video/vnd.avi",
+                "video/webm",
+                "video/x-flv",
+                "video/x-m4v",
+                "video/x-matroska",
+                "video/x-ms-asf"
+            ],
+            "type": "string"
+        },
+        "fileName": {
+            "type": "string"
+        },
+        "fullPath": {
+            "type": "string"
+        },
+        "hash": {
+            "$ref": "#/definitions/Hash"
+        },
+        "pathInSearchDir": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "fileName",
+        "fullPath",
+        "hash",
+        "pathInSearchDir"
+    ],
+    "type": "object"
+}
+
