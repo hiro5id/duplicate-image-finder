@@ -1,13 +1,13 @@
 import { inject, injectable } from './ioc-container';
 import { Transform } from 'typed-streams';
 import { FileAttributesWithTypeAndHash } from './file-attributes-extractor.interface';
-import { Foo } from './foo';
+import { SaveImageMetaData } from './save-image-meta-data';
 
 @injectable()
 export class SaveToMetadatDbTransform extends Transform<FileAttributesWithTypeAndHash, FileAttributesWithTypeAndHash> {
   readonly name: string = SaveToMetadatDbTransform.name;
 
-  constructor(@inject('objectMode') opts: {}, private readonly foo: Foo) {
+  constructor(@inject('objectMode') opts: {}, private readonly foo: SaveImageMetaData) {
     super(opts);
     foo.bar();
   }
