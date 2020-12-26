@@ -24,9 +24,9 @@
   "scripts": {
     "prebuild": "echo 'runnign create-ts-index' && cti --excludes schemas --withoutbackup create ./src && rimraf **/index.ts.bak",
     "build": "npm run build:tsc",
-    "build:tsc": "rimraf ./dist && tsc -sourcemap && npm run generate:schema-1",
+    "build:tsc": "rimraf ./dist && npm run generate:interface-schemas && tsc -sourcemap",
     "build:watch": "npm run build:tsc -- -w",
-    "generate:schema-1": "typescript-json-schema ./tsconfig.json ImageMetadata --required --out ./src/schemas/image-metadata.json",
+    "generate:interface-schemas": "typescript-json-schema ./tsconfig.json \"*\" --include **/*.interface.ts --id defs --noExtraProps --required --out ./src/schemas/interface-schemas.json",
     "lint:check": "npm run prettier:check && npm run eslint",
     "lint:fix": "npm run prettier:fix",
     "eslint": "eslint --ignore-path .eslintignore . --ext .ts",
