@@ -1,8 +1,23 @@
 import { Hash } from './hash.interface';
 
 export interface FileAttributes {
+  /**
+   * Full path to the file
+   *
+   * @minLength 1
+   */
   fullPath: string;
+  /**
+   * Path relative to the search root directory
+   *
+   * @minLength 1
+   */
   pathInSearchDir: string;
+  /**
+   * Name of the file
+   *
+   * @minLength 1
+   */
   fileName: string;
 }
 

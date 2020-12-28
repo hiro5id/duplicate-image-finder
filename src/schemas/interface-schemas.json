@@ -6,12 +6,18 @@
             "additionalProperties": false,
             "properties": {
                 "fileName": {
+                    "description": "Name of the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
+                    "description": "Full path to the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "pathInSearchDir": {
+                    "description": "Path relative to the search root directory",
+                    "minLength": 1,
                     "type": "string"
                 }
             },
@@ -158,12 +164,18 @@
                     "type": "string"
                 },
                 "fileName": {
+                    "description": "Name of the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
+                    "description": "Full path to the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "pathInSearchDir": {
+                    "description": "Path relative to the search root directory",
+                    "minLength": 1,
                     "type": "string"
                 }
             },
@@ -310,15 +322,21 @@
                     "type": "string"
                 },
                 "fileName": {
+                    "description": "Name of the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
+                    "description": "Full path to the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "hash": {
                     "$ref": "defs#/definitions/Hash"
                 },
                 "pathInSearchDir": {
+                    "description": "Path relative to the search root directory",
+                    "minLength": 1,
                     "type": "string"
                 }
             },
@@ -466,15 +484,19 @@
             "additionalProperties": false,
             "properties": {
                 "binaryHash": {
+                    "description": "the hash value in binary form",
+                    "pattern": "^[0-9]*$",
                     "type": "string"
                 },
                 "type": {
+                    "description": "algorithm used for the hash",
                     "enum": [
                         "dhash"
                     ],
                     "type": "string"
                 },
                 "version": {
+                    "description": "version of the algorithm",
                     "enum": [
                         "v1"
                     ],
@@ -624,15 +646,21 @@
                     "type": "string"
                 },
                 "fileName": {
+                    "description": "Name of the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
+                    "description": "Full path to the file",
+                    "minLength": 1,
                     "type": "string"
                 },
                 "hash": {
                     "$ref": "defs#/definitions/Hash"
                 },
                 "pathInSearchDir": {
+                    "description": "Path relative to the search root directory",
+                    "minLength": 1,
                     "type": "string"
                 }
             },
@@ -641,6 +669,22 @@
                 "fullPath",
                 "hash",
                 "pathInSearchDir"
+            ],
+            "type": "object"
+        },
+        "ValidationError": {
+            "additionalProperties": false,
+            "properties": {
+                "keyword": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "keyword",
+                "message"
             ],
             "type": "object"
         }

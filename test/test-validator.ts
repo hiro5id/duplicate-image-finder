@@ -4,12 +4,12 @@ import { expect } from 'chai';
 describe('test validator', function () {
   it('is valid', function () {
     const testData: ImageMetadata = {
-      pathInSearchDir: '',
+      pathInSearchDir: '/some/path',
       fileMimeType: 'application/ogg',
-      fileName: '',
-      fullPath: '',
+      fileName: 'someFile.png',
+      fullPath: '/the/full/path',
       hash: {
-        binaryHash: '',
+        binaryHash: '0110010201112',
         type: 'dhash',
         version: 'v1',
       },
@@ -30,7 +30,31 @@ describe('test validator', function () {
         version: 'v1',
       },
     };
-    const result = isImageMetadata(testData);
+    const errors: any[] = [];
+    const result = isImageMetadata(testData, errors);
+
     expect(result).eql(false);
+    expect(errors).eql([
+      {
+        keyword: 'type',
+        message: 'should be string',
+      },
+      {
+        keyword: 'enum',
+        message: 'should be equal to one of the allowed values',
+      },
+      {
+        keyword: 'minLength',
+        message: 'should NOT have fewer than 1 characters',
+      },
+      {
+        keyword: 'minLength',
+        message: 'should NOT have fewer than 1 characters',
+      },
+      {
+        keyword: 'minLength',
+        message: 'should NOT have fewer than 1 characters',
+      },
+    ]);
   });
 });
