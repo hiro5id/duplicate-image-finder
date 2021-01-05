@@ -1,9 +1,9 @@
-import { createContainer } from './create-container';
+import { createSingletonContainer } from './create-singleton-container';
 import { IContainerWrapper } from './container-wrapper.interface';
 import { interfaces } from './lib';
 
 export function createContainerWrapper(): IContainerWrapper {
-  return new ContainerWrapper(createContainer());
+  return new ContainerWrapper(createSingletonContainer());
 }
 
 /**

@@ -1,3 +1,4 @@
+// noinspection ES6PreferShortImport
 import { inject, injectable } from './ioc-container';
 import { Transform } from 'typed-streams';
 import { FileAttributesWithTypeAndHash } from './file-attributes-extractor.interface';
@@ -7,9 +8,8 @@ import { SaveImageMetaData } from './save-image-meta-data';
 export class SaveToMetadatDbTransform extends Transform<FileAttributesWithTypeAndHash, FileAttributesWithTypeAndHash> {
   readonly name: string = SaveToMetadatDbTransform.name;
 
-  constructor(@inject('objectMode') opts: {}, private readonly foo: SaveImageMetaData) {
+  constructor(@inject('objectMode') opts: {}, private readonly saveImageMetaData: SaveImageMetaData) {
     super(opts);
-    foo.bar();
   }
 
   _transformEx(chunk: FileAttributesWithTypeAndHash, encoding: BufferEncoding, callback: (error?: Error | null, data?: any) => void) {
@@ -22,6 +22,6 @@ export class SaveToMetadatDbTransform extends Transform<FileAttributesWithTypeAn
   }
 
   private async save(chunk: FileAttributesWithTypeAndHash, _encoding: BufferEncoding) {
-    this.foo.save(chunk);
+    this.saveImageMetaData.save(chunk);
   }
 }

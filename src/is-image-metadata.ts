@@ -7,7 +7,7 @@ import { ValidationError } from './validation-error.interface';
 
 export function isImageMetadata(data: unknown, errors?: ValidationError[]): data is ImageMetadata {
   let ajv = new Ajv({ allErrors: true }); // Ajv option allErrors is required
-  require('ajv-errors')(ajv); // better validation errors
+  require('ajv-errors')(ajv); // better errors
 
   // load validation schema
   ajv = ajv.addSchema(imageMetadataSchema);
