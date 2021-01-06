@@ -1,11 +1,11 @@
 import { Transform } from 'typed-streams';
 import { FileAttributesWithType, FileAttributesWithTypeAndHash } from './file-attributes-extractor.interface';
-import { Hash } from './hash.interface';
 import { promisify } from 'util';
 import * as fs from 'fs';
 import * as os from 'os';
 import path from 'path';
 import crypto from 'crypto';
+// noinspection ES6PreferShortImport
 import { inject, injectable } from './ioc-container';
 
 const dhash = require('dhash-image');
@@ -51,15 +51,9 @@ export class CalculateDhashV1 extends Transform<FileAttributesWithType, FileAttr
     const dhashv1 = await this.calcDhashv1(filePathToCalcHash);
     const dhashBinaryV1 = this.getBinaryString(dhashv1);
 
-    const calculatedHash = {
-      type: 'dhash',
-      version: 'v1',
-      binaryHash: dhashBinaryV1,
-    } as Hash;
+    this.push({ ...chunk, ...{ binaryHash: dhashBinaryV1 } }, encoding);
 
-    this.push({ ...chunk, ...{ hash: calculatedHash } }, encoding);
-
-    console.log('calculated signature: ', chunk.fileName, calculatedHash.binaryHash, chunk.pathInSearchDir);
+    console.log('calculated signature: ', chunk.fileName, dhashBinaryV1, chunk.pathInSearchDir);
     if (cleanupTmpFile != null) {
       void promisify(fs.unlink)(cleanupTmpFile);
     }
@@ -76,6 +70,7 @@ export class CalculateDhashV1 extends Transform<FileAttributesWithType, FileAttr
     });
   }
 
+  // noinspection JSMethodCanBeStatic
   private getBinaryString(result: any) {
     const binaryStringArray = [...result].map((m: number) => m.toString(2)).map(m => '0'.repeat(8 - m.length) + m);
     return binaryStringArray.join('');

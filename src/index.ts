@@ -2,14 +2,13 @@
 
 export * from './ioc-container';
 export * from './calculate-dhash-v1';
-export * from './cli';
+export * from './collection-enum';
 export * from './composition-root';
 export * from './extract-file-attributes';
 export * from './extract-file-type';
 export * from './file-attributes-extractor.interface';
 export * from './filter-only-image-files';
 export * from './get-prop-name';
-export * from './hash.interface';
 export * from './image-meta-data-saver';
 export * from './image-metadata.interface';
 export * from './is-array';

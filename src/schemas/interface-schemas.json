@@ -189,6 +189,13 @@
         "FileAttributesWithTypeAndHash": {
             "additionalProperties": false,
             "properties": {
+                "binaryHash": {
+                    "description": "the hash value in binary form",
+                    "maxLength": 64,
+                    "minLength": 64,
+                    "pattern": "^[0-9]*$",
+                    "type": "string"
+                },
                 "fileMimeType": {
                     "enum": [
                         "application/dicom",
@@ -331,9 +338,6 @@
                     "minLength": 1,
                     "type": "string"
                 },
-                "hash": {
-                    "$ref": "defs#/definitions/Hash"
-                },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
                     "minLength": 1,
@@ -341,9 +345,9 @@
                 }
             },
             "required": [
+                "binaryHash",
                 "fileName",
                 "fullPath",
-                "hash",
                 "pathInSearchDir"
             ],
             "type": "object"
@@ -480,39 +484,16 @@
             ],
             "type": "string"
         },
-        "Hash": {
+        "ImageMetadata": {
             "additionalProperties": false,
             "properties": {
                 "binaryHash": {
                     "description": "the hash value in binary form",
+                    "maxLength": 64,
+                    "minLength": 64,
                     "pattern": "^[0-9]*$",
                     "type": "string"
                 },
-                "type": {
-                    "description": "algorithm used for the hash",
-                    "enum": [
-                        "dhash"
-                    ],
-                    "type": "string"
-                },
-                "version": {
-                    "description": "version of the algorithm",
-                    "enum": [
-                        "v1"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "binaryHash",
-                "type",
-                "version"
-            ],
-            "type": "object"
-        },
-        "ImageMetadata": {
-            "additionalProperties": false,
-            "properties": {
                 "fileMimeType": {
                     "enum": [
                         "application/dicom",
@@ -655,9 +636,6 @@
                     "minLength": 1,
                     "type": "string"
                 },
-                "hash": {
-                    "$ref": "defs#/definitions/Hash"
-                },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
                     "minLength": 1,
@@ -665,9 +643,9 @@
                 }
             },
             "required": [
+                "binaryHash",
                 "fileName",
                 "fullPath",
-                "hash",
                 "pathInSearchDir"
             ],
             "type": "object"

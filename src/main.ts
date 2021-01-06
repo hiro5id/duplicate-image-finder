@@ -31,7 +31,7 @@ export class Main {
     saver.save({
       fileMimeType: 'application/ogg',
       fileName: 'hello',
-      hash: { binaryHash: '1234gsdf', type: 'dhash', version: 'v1' },
+      binaryHash: '1234gsdf',
       fullPath: 'abc',
       pathInSearchDir: 'asdf',
     });

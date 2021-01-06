@@ -8,4 +8,7 @@ main
   .then(() => {
     console.log('done');
   })
-  .catch(err => console.error(`error ${err.message}`));
+  .catch(err => {
+    console.error(`error ${err.message}`);
+    process.exit(2);
+  });

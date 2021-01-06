@@ -22,7 +22,7 @@
     "duplicate"
   ],
   "scripts": {
-    "prebuild": "echo 'runnign create-ts-index' && cti --excludes schemas --withoutbackup create ./src && rimraf **/index.ts.bak",
+    "prebuild": "echo 'runnign create-ts-index' && cti --excludes schemas --fileexcludes cli.ts --withoutbackup create ./src && rimraf **/index.ts.bak",
     "build": "npm run build:tsc",
     "build:tsc": "rimraf ./dist && npm run generate:interface-schemas && tsc -sourcemap",
     "build:watch": "npm run build:tsc -- -w",
@@ -64,6 +64,7 @@
     "heic-convert": "^1.2.3",
     "inversify": "^5.0.1",
     "inversify-binding-decorators": "^4.0.0",
+    "mongodb": "^3.6.3",
     "readdirp": "^3.5.0",
     "reflect-metadata": "^0.1.13",
     "typed-streams": "^1.6.2",

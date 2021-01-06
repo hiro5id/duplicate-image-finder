@@ -16,14 +16,16 @@ function getBinaryString(result: any) {
   return binaryStringArray.join('');
 }
 
-xdescribe('dummy', function () {
+describe('dummy', function () {
   this.timeout(99999999);
 
-  it('dummy', async function () {
-    const result = (await calcDhashv1('/Users/roberto/Downloads/lena1.jpg')) as any;
-    const result2 = (await calcDhashv1('/Users/roberto/Downloads/lena1.jpg')) as any;
+  xit('dummy', async function () {
+    const result = (await calcDhashv1('/Users/roberto/Pictures/mike2.png')) as any;
+    const result2 = (await calcDhashv1('/Users/roberto/Pictures/mike3.png')) as any;
     const resultBinary = getBinaryString(result);
+    console.log(resultBinary);
     const resultBinary2 = getBinaryString(result2);
+    console.log(resultBinary2);
 
     const srcHash = new Hash(resultBinary);
     const distance = srcHash.getHammingDistance(new Hash(resultBinary2));

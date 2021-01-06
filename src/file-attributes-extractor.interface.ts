@@ -1,5 +1,3 @@
-import { Hash } from './hash.interface';
-
 export interface FileAttributes {
   /**
    * Full path to the file
@@ -156,5 +154,12 @@ export interface FileAttributesWithType extends FileAttributes {
 }
 
 export interface FileAttributesWithTypeAndHash extends FileAttributesWithType {
-  hash: Hash;
+  /**
+   * the hash value in binary form
+   *
+   * @pattern "^[0-9]*$"
+   * @minLength 64
+   * @maxLength 64
+   */
+  binaryHash: string;
 }

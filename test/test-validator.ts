@@ -8,11 +8,7 @@ describe('test validator', function () {
       fileMimeType: 'application/ogg',
       fileName: 'someFile.png',
       fullPath: '/the/full/path',
-      hash: {
-        binaryHash: '0110010201112',
-        type: 'dhash',
-        version: 'v1',
-      },
+      binaryHash: '1011100011111100111111001111110001111100001011000001101111001011',
     };
     const result = isImageMetadata(testData);
     expect(result).eql(true);
@@ -24,17 +20,17 @@ describe('test validator', function () {
       fileMimeType: 1,
       fileName: '',
       fullPath: '',
-      hash: {
-        binaryHash: '',
-        type: 'dhash',
-        version: 'v1',
-      },
+      binaryHash: '',
     };
     const errors: any[] = [];
     const result = isImageMetadata(testData, errors);
 
     expect(result).eql(false);
     expect(errors).eql([
+      {
+        keyword: 'minLength',
+        message: 'should NOT have fewer than 64 characters',
+      },
       {
         keyword: 'type',
         message: 'should be string',
