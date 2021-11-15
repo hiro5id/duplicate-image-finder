@@ -193,7 +193,7 @@
                     "description": "the hash value in binary form",
                     "maxLength": 64,
                     "minLength": 64,
-                    "pattern": "^[0-9]*$",
+                    "pattern": "^[01]*$",
                     "type": "string"
                 },
                 "fileMimeType": {
@@ -345,7 +345,6 @@
                 }
             },
             "required": [
-                "binaryHash",
                 "fileName",
                 "fullPath",
                 "pathInSearchDir"
@@ -491,7 +490,7 @@
                     "description": "the hash value in binary form",
                     "maxLength": 64,
                     "minLength": 64,
-                    "pattern": "^[0-9]*$",
+                    "pattern": "^[01]*$",
                     "type": "string"
                 },
                 "fileMimeType": {
@@ -643,7 +642,6 @@
                 }
             },
             "required": [
-                "binaryHash",
                 "fileName",
                 "fullPath",
                 "pathInSearchDir"

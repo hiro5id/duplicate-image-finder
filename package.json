@@ -7,8 +7,8 @@
   "main": "./dist/src/cli.js",
   "license": "MIT",
   "engines": {
-    "node": ">=10.13",
-    "npm": ">=6.4.1"
+    "node": "^14.0.0",
+    "npm": "^6.0.0"
   },
   "repository": {
     "type": "git",
@@ -44,15 +44,11 @@
     "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
     "np-publish": "np",
     "dev-install-command": "npm link",
-    "dev-uninstall-command": "npm unlink"
+    "dev-uninstall-command": "npm unlink",
+    "prepare": "husky install"
   },
   "bin": {
     "iker": "./dist/src/cli.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:check"
-    }
   },
   "dependencies": {
     "ajv": "^7.0.2",
@@ -84,7 +80,7 @@
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-unicorn": "^23.0.0",
-    "husky": "^4.3.0",
+    "husky": "^7.0.4",
     "mocha": "^8.2.1",
     "np": "^7.0.0",
     "prettier": "^2.1.2",

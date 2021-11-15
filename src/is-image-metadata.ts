@@ -1,6 +1,6 @@
 import { ImageMetadata } from './image-metadata.interface';
 import Ajv from 'ajv';
-import imageMetadataSchema from './schemas/interface-schemas.json';
+import interfaceSchemas from './schemas/interface-schemas.json';
 import { isArray } from './is-array';
 import { getPropName } from './get-prop-name';
 import { ValidationError } from './validation-error.interface';
@@ -10,8 +10,8 @@ export function isImageMetadata(data: unknown, errors?: ValidationError[]): data
   require('ajv-errors')(ajv); // better errors
 
   // load validation schema
-  ajv = ajv.addSchema(imageMetadataSchema);
-  const validate = ajv.compile(imageMetadataSchema.definitions.ImageMetadata);
+  ajv = ajv.addSchema(interfaceSchemas);
+  const validate = ajv.compile(interfaceSchemas.definitions.ImageMetadata);
 
   // validate
   const valid = validate(data);
@@ -22,10 +22,10 @@ export function isImageMetadata(data: unknown, errors?: ValidationError[]): data
     return true;
   } else {
     // show validation errors
-    const errMsg = `validation failed for ${getPropName(imageMetadataSchema.definitions, imageMetadataSchema.definitions.ImageMetadata)}`;
+    const errMsg = `validation failed for ${getPropName(interfaceSchemas.definitions, interfaceSchemas.definitions.ImageMetadata)}`;
     if (isArray(validate.errors)) {
       const validationErrors = validate.errors.map(m => {
-        return { keyword: m.keyword, message: m.message } as ValidationError;
+        return { keyword: m.keyword, dataPath: m.dataPath, message: m.message } as ValidationError;
       });
       console.error(errMsg, { errors: validationErrors });
       if (errors != null) errors.push(...validationErrors);

@@ -157,9 +157,9 @@ export interface FileAttributesWithTypeAndHash extends FileAttributesWithType {
   /**
    * the hash value in binary form
    *
-   * @pattern "^[0-9]*$"
+   * @pattern "^[01]*$"
    * @minLength 64
    * @maxLength 64
    */
-  binaryHash: string;
+  binaryHash?: string;
 }
