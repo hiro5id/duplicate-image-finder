@@ -32,7 +32,7 @@
     "eslint": "eslint --ignore-path .eslintignore . --ext .ts",
     "start": "node --require source-map-support/register ./dist/src/cli.js",
     "clean": "rimraf dist node_modules",
-    "test": "mocha \"dist/test/**/*.js\"",
+    "test": "`#mocha \"dist/test/**/*.js\"`",
     "audit:lerna-packages": "SCRIPT_DIR=\"$(pwd)\" && echo $SCRIPT_DIR && bash npm-audit.sh && lerna exec --stream --concurrency 1 --no-bail -- bash \"$SCRIPT_DIR/npm-audit.sh\"",
     "prepublishOnly": "npm run clean && npm run install:prod && npm run build && npm run lint:check && `#npm run test` && npm run prune:prod",
     "preversion": "npm run build && npm run test",
