@@ -11,7 +11,6 @@ import { CalculateDhashV1 } from './calculate-dhash-v1';
 import { LoggerAdaptToConsole } from 'console-log-json';
 import { compositionRoot } from './composition-root';
 import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
-import { SaveImageMetaData } from './save-image-meta-data';
 
 LoggerAdaptToConsole();
 /*
@@ -27,15 +26,6 @@ export class Main {
 
     //todo: remove this
     container.get(SaveToMetadatDbTransform);
-    const saver = container.get(SaveImageMetaData);
-    saver.save({
-      fileMimeType: 'application/ogg',
-      fileName: 'hello',
-      binaryHash: '1234gsdf',
-      fullPath: 'abc',
-      pathInSearchDir: 'asdf',
-    });
-    return;
 
     const inputPath = '~/Pictures';
     const startPath = resolvePath(inputPath);

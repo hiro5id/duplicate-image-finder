@@ -14,7 +14,6 @@ export * from './image-metadata.interface';
 export * from './is-array';
 export * from './is-image-metadata';
 export * from './main';
-export * from './mongo-save-image-meta-data';
 export * from './save-image-meta-data';
 export * from './save-to-metadat-db-transform';
 export * from './validation-error.interface';

@@ -48,7 +48,7 @@
     "prepare": "husky install"
   },
   "bin": {
-    "iker": "node ./dist/src/cli.js"
+    "iker": "./dist/src/cli.js"
   },
   "dependencies": {
     "ajv": "^7.0.2",
