@@ -8,11 +8,11 @@ import { ExtractFileAttributes } from './extract-file-attributes';
 import { ExtractFileType } from './extract-file-type';
 import { FilterOnlyImageFiles } from './filter-only-image-files';
 import { CalculateDhashV1 } from './calculate-dhash-v1';
-import { LoggerAdaptToConsole } from 'console-log-json';
+//import { LoggerAdaptToConsole } from 'console-log-json';
 import { compositionRoot } from './composition-root';
 import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
 
-LoggerAdaptToConsole();
+//LoggerAdaptToConsole();
 /*
   writing cross platform paths:
   https://shapeshed.com/writing-cross-platform-node/
