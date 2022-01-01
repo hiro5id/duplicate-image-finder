@@ -51,7 +51,10 @@ export class CalculateDhashV1 extends Transform<FileAttributesWithType, FileAttr
     const dhashv1 = await this.calcDhashv1(filePathToCalcHash);
     const dhashBinaryV1 = this.getBinaryString(dhashv1);
 
-    this.push({ ...chunk, ...{ binaryHash: dhashBinaryV1 } }, encoding);
+    const dataToPushAlong = { ...chunk, ...{ binaryHash: dhashBinaryV1 } };
+    console.log('-------');
+    console.log(JSON.stringify(dataToPushAlong, null, 2));
+    this.push(dataToPushAlong, encoding);
 
     console.log('calculated signature: ', chunk.fileName, dhashBinaryV1, chunk.pathInSearchDir);
     if (cleanupTmpFile != null) {

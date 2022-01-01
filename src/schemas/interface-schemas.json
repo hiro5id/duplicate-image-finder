@@ -7,17 +7,32 @@
             "properties": {
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 }
             },
@@ -46,6 +61,7 @@
                         "application/vnd.ms-asf",
                         "application/vnd.ms-cab-compressed",
                         "application/vnd.ms-fontobject",
+                        "application/vnd.ms-htmlhelp",
                         "application/vnd.oasis.opendocument.presentation",
                         "application/vnd.oasis.opendocument.spreadsheet",
                         "application/vnd.oasis.opendocument.text",
@@ -85,6 +101,7 @@
                         "application/x.ms.shortcut",
                         "application/xml",
                         "application/zip",
+                        "application/zstd",
                         "audio/aac",
                         "audio/aiff",
                         "audio/amr",
@@ -126,6 +143,7 @@
                         "image/jpeg",
                         "image/jpm",
                         "image/jpx",
+                        "image/jxl",
                         "image/ktx",
                         "image/mj2",
                         "image/png",
@@ -142,9 +160,12 @@
                         "image/x-olympus-orf",
                         "image/x-panasonic-rw2",
                         "image/x-sony-arw",
+                        "image/x-xcf",
+                        "model/3mf",
                         "model/gltf-binary",
                         "model/stl",
                         "text/calendar",
+                        "text/vcard",
                         "video/3gpp",
                         "video/3gpp2",
                         "video/MP1S",
@@ -165,17 +186,32 @@
                 },
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 }
             },
@@ -191,9 +227,24 @@
             "properties": {
                 "binaryHash": {
                     "description": "the hash value in binary form",
-                    "maxLength": 64,
-                    "minLength": 64,
-                    "pattern": "^[01]*$",
+                    "maxLength": [
+                        {
+                            "kind": "text",
+                            "text": "64"
+                        }
+                    ],
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "64"
+                        }
+                    ],
+                    "pattern": [
+                        {
+                            "kind": "text",
+                            "text": "\"^[01]*$\""
+                        }
+                    ],
                     "type": "string"
                 },
                 "fileMimeType": {
@@ -211,6 +262,7 @@
                         "application/vnd.ms-asf",
                         "application/vnd.ms-cab-compressed",
                         "application/vnd.ms-fontobject",
+                        "application/vnd.ms-htmlhelp",
                         "application/vnd.oasis.opendocument.presentation",
                         "application/vnd.oasis.opendocument.spreadsheet",
                         "application/vnd.oasis.opendocument.text",
@@ -250,6 +302,7 @@
                         "application/x.ms.shortcut",
                         "application/xml",
                         "application/zip",
+                        "application/zstd",
                         "audio/aac",
                         "audio/aiff",
                         "audio/amr",
@@ -291,6 +344,7 @@
                         "image/jpeg",
                         "image/jpm",
                         "image/jpx",
+                        "image/jxl",
                         "image/ktx",
                         "image/mj2",
                         "image/png",
@@ -307,9 +361,12 @@
                         "image/x-olympus-orf",
                         "image/x-panasonic-rw2",
                         "image/x-sony-arw",
+                        "image/x-xcf",
+                        "model/3mf",
                         "model/gltf-binary",
                         "model/stl",
                         "text/calendar",
+                        "text/vcard",
                         "video/3gpp",
                         "video/3gpp2",
                         "video/MP1S",
@@ -330,17 +387,32 @@
                 },
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 }
             },
@@ -366,6 +438,7 @@
                 "application/vnd.ms-asf",
                 "application/vnd.ms-cab-compressed",
                 "application/vnd.ms-fontobject",
+                "application/vnd.ms-htmlhelp",
                 "application/vnd.oasis.opendocument.presentation",
                 "application/vnd.oasis.opendocument.spreadsheet",
                 "application/vnd.oasis.opendocument.text",
@@ -405,6 +478,7 @@
                 "application/x.ms.shortcut",
                 "application/xml",
                 "application/zip",
+                "application/zstd",
                 "audio/aac",
                 "audio/aiff",
                 "audio/amr",
@@ -446,6 +520,7 @@
                 "image/jpeg",
                 "image/jpm",
                 "image/jpx",
+                "image/jxl",
                 "image/ktx",
                 "image/mj2",
                 "image/png",
@@ -462,9 +537,12 @@
                 "image/x-olympus-orf",
                 "image/x-panasonic-rw2",
                 "image/x-sony-arw",
+                "image/x-xcf",
+                "model/3mf",
                 "model/gltf-binary",
                 "model/stl",
                 "text/calendar",
+                "text/vcard",
                 "video/3gpp",
                 "video/3gpp2",
                 "video/MP1S",
@@ -488,9 +566,24 @@
             "properties": {
                 "binaryHash": {
                     "description": "the hash value in binary form",
-                    "maxLength": 64,
-                    "minLength": 64,
-                    "pattern": "^[01]*$",
+                    "maxLength": [
+                        {
+                            "kind": "text",
+                            "text": "64"
+                        }
+                    ],
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "64"
+                        }
+                    ],
+                    "pattern": [
+                        {
+                            "kind": "text",
+                            "text": "\"^[01]*$\""
+                        }
+                    ],
                     "type": "string"
                 },
                 "fileMimeType": {
@@ -508,6 +601,7 @@
                         "application/vnd.ms-asf",
                         "application/vnd.ms-cab-compressed",
                         "application/vnd.ms-fontobject",
+                        "application/vnd.ms-htmlhelp",
                         "application/vnd.oasis.opendocument.presentation",
                         "application/vnd.oasis.opendocument.spreadsheet",
                         "application/vnd.oasis.opendocument.text",
@@ -547,6 +641,7 @@
                         "application/x.ms.shortcut",
                         "application/xml",
                         "application/zip",
+                        "application/zstd",
                         "audio/aac",
                         "audio/aiff",
                         "audio/amr",
@@ -588,6 +683,7 @@
                         "image/jpeg",
                         "image/jpm",
                         "image/jpx",
+                        "image/jxl",
                         "image/ktx",
                         "image/mj2",
                         "image/png",
@@ -604,9 +700,12 @@
                         "image/x-olympus-orf",
                         "image/x-panasonic-rw2",
                         "image/x-sony-arw",
+                        "image/x-xcf",
+                        "model/3mf",
                         "model/gltf-binary",
                         "model/stl",
                         "text/calendar",
+                        "text/vcard",
                         "video/3gpp",
                         "video/3gpp2",
                         "video/MP1S",
@@ -627,17 +726,32 @@
                 },
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": 1,
+                    "minLength": [
+                        {
+                            "kind": "text",
+                            "text": "1"
+                        }
+                    ],
                     "type": "string"
                 }
             },

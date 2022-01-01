@@ -7,8 +7,8 @@
   "main": "./dist/src/cli.js",
   "license": "MIT",
   "engines": {
-    "node": "^14.0.0",
-    "npm": "^6.0.0"
+    "node": ">=14.0.0",
+    "npm": ">=7.24.2"
   },
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
     "prepare": "husky install"
   },
   "bin": {
-    "iker": "./dist/src/cli.js"
+    "iker": "node ./dist/src/cli.js"
   },
   "dependencies": {
     "ajv": "^7.0.2",
@@ -60,7 +60,6 @@
     "heic-convert": "^1.2.3",
     "inversify": "^5.0.1",
     "inversify-binding-decorators": "^4.0.0",
-    "mongodb": "^3.6.3",
     "readdirp": "^3.5.0",
     "reflect-metadata": "^0.1.13",
     "typed-streams": "^1.6.2",
@@ -70,22 +69,22 @@
     "@types/app-root-path": "^1.2.4",
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.0.3",
-    "@types/node": "^14.14.2",
-    "@types/rimraf": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@types/node": "^17.0.5",
+    "@types/rimraf": "^3.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "chai": "^4.2.0",
-    "check-outdated": "^2.4.1",
-    "create-ts-index": "^1.13.6",
-    "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-unicorn": "^23.0.0",
+    "check-outdated": "^2.10.2",
+    "create-ts-index": "^1.14.0",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-unicorn": "^40.0.0",
     "husky": "^7.0.4",
     "mocha": "^8.2.1",
-    "np": "^7.0.0",
-    "prettier": "^2.1.2",
+    "np": "^7.6.0",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.5"
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   }
 }

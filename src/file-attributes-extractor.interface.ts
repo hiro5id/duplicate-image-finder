@@ -26,6 +26,7 @@ export type FileMimeType =
   | 'image/gif'
   | 'image/webp'
   | 'image/flif'
+  | 'image/x-xcf'
   | 'image/x-canon-cr2'
   | 'image/x-canon-cr3'
   | 'image/tiff'
@@ -118,6 +119,7 @@ export type FileMimeType =
   | 'application/dicom'
   | 'audio/x-musepack'
   | 'text/calendar'
+  | 'text/vcard'
   | 'model/gltf-binary'
   | 'application/vnd.tcpdump.pcap'
   | 'audio/x-dsf' // Non-standard
@@ -147,7 +149,11 @@ export type FileMimeType =
   | 'application/x-lzh-compressed'
   | 'application/pgp-encrypted'
   | 'application/x-asar'
-  | 'model/stl';
+  | 'model/stl'
+  | 'application/vnd.ms-htmlhelp'
+  | 'model/3mf'
+  | 'image/jxl'
+  | 'application/zstd';
 
 export interface FileAttributesWithType extends FileAttributes {
   fileMimeType: FileMimeType;

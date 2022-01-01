@@ -16,7 +16,7 @@ export class FilterOnlyImageFiles extends Transform<FileAttributesWithType, File
         this.push(chunk, encoding);
       }
       callback();
-    } catch (err) {
+    } catch (err: any) {
       console.log(`error in ${this.name}`, err);
       callback(err);
     }
