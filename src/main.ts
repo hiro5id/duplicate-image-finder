@@ -29,6 +29,7 @@ export class Main {
 
     const inputPath = '~/Pictures';
     const startPath = resolvePath(inputPath);
+    console.log(`scanning: ${startPath}`);
     // await readdirp(startPath, { type: 'files' }).pipe(new FileProcessor()).toPromiseFinish();
     await readdirp(startPath, { type: 'files' })
       .pipe(container.get(ExtractFileAttributes))
