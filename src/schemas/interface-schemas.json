@@ -7,32 +7,17 @@
             "properties": {
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 }
             },
@@ -186,32 +171,17 @@
                 },
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 }
             },
@@ -227,24 +197,9 @@
             "properties": {
                 "binaryHash": {
                     "description": "the hash value in binary form",
-                    "maxLength": [
-                        {
-                            "kind": "text",
-                            "text": "64"
-                        }
-                    ],
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "64"
-                        }
-                    ],
-                    "pattern": [
-                        {
-                            "kind": "text",
-                            "text": "\"^[01]*$\""
-                        }
-                    ],
+                    "maxLength": 64,
+                    "minLength": 64,
+                    "pattern": "^[01]*$",
                     "type": "string"
                 },
                 "fileMimeType": {
@@ -387,32 +342,17 @@
                 },
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 }
             },
@@ -566,24 +506,9 @@
             "properties": {
                 "binaryHash": {
                     "description": "the hash value in binary form",
-                    "maxLength": [
-                        {
-                            "kind": "text",
-                            "text": "64"
-                        }
-                    ],
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "64"
-                        }
-                    ],
-                    "pattern": [
-                        {
-                            "kind": "text",
-                            "text": "\"^[01]*$\""
-                        }
-                    ],
+                    "maxLength": 64,
+                    "minLength": 64,
+                    "pattern": "^[01]*$",
                     "type": "string"
                 },
                 "fileMimeType": {
@@ -726,32 +651,17 @@
                 },
                 "fileName": {
                     "description": "Name of the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "fullPath": {
                     "description": "Full path to the file",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 },
                 "pathInSearchDir": {
                     "description": "Path relative to the search root directory",
-                    "minLength": [
-                        {
-                            "kind": "text",
-                            "text": "1"
-                        }
-                    ],
+                    "minLength": 1,
                     "type": "string"
                 }
             },

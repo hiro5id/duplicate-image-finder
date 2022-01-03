@@ -25,7 +25,7 @@ export function isImageMetadata(data: unknown, errors?: ValidationError[]): data
     const errMsg = `validation failed for ${getPropName(interfaceSchemas.definitions, interfaceSchemas.definitions.ImageMetadata)}`;
     if (isArray(validate.errors)) {
       const validationErrors = validate.errors.map(m => {
-        return { keyword: m.keyword, dataPath: m.dataPath, message: m.message } as ValidationError;
+        return { keyword: m.keyword, schemaPath: m.schemaPath, instancePath: m.instancePath, message: m.message } as ValidationError;
       });
       console.error(errMsg, { errors: validationErrors });
       if (errors != null) errors.push(...validationErrors);
