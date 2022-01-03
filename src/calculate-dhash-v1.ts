@@ -6,7 +6,7 @@ import * as os from 'os';
 import path from 'path';
 import crypto from 'crypto';
 // noinspection ES6PreferShortImport
-import { inject, injectable } from './ioc-container';
+import { inject, injectable } from './ioc-container/lib';
 
 const dhash = require('dhash-image');
 const convert = require('heic-convert');

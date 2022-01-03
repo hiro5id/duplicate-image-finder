@@ -22,7 +22,7 @@
     "duplicate"
   ],
   "scripts": {
-    "prebuild": "echo 'runnign create-ts-index' && cti --excludes schemas --fileexcludes cli.ts --withoutbackup create ./src && rimraf **/index.ts.bak",
+    "prebuild": "",
     "build": "npm run build:tsc",
     "build:tsc": "rimraf ./dist && npm run generate:interface-schemas && tsc -sourcemap",
     "build:watch": "npm run build:tsc -- -w",
@@ -74,7 +74,6 @@
     "@typescript-eslint/parser": "^5.8.1",
     "chai": "^4.2.0",
     "check-outdated": "^2.10.2",
-    "create-ts-index": "^1.14.0",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-unicorn": "^40.0.0",

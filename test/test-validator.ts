@@ -1,5 +1,6 @@
-import { ImageMetadata, isImageMetadata } from '../src';
 import { expect } from 'chai';
+import { ImageMetadata } from '../src/image-metadata.interface';
+import { isImageMetadata } from '../src/is-image-metadata';
 
 describe('test validator', function () {
   it('is valid', function () {

@@ -1,4 +1,4 @@
-import { createSingletonContainer, decorate, injectable, interfaces } from './ioc-container';
+import { decorate, injectable, interfaces } from './ioc-container/lib';
 import { CalculateDhashV1 } from './calculate-dhash-v1';
 import NodeStream from 'stream';
 import { FilterOnlyImageFiles } from './filter-only-image-files';
@@ -6,6 +6,7 @@ import { ExtractFileType } from './extract-file-type';
 import { ExtractFileAttributes } from './extract-file-attributes';
 import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
 import { SaveImageMetaData } from './save-image-meta-data';
+import { createSingletonContainer } from './ioc-container/create-singleton-container';
 
 // const databaseType: 'mongo' | 'filesystem' = 'mongo';
 

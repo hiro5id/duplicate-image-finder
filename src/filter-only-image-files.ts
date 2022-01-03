@@ -1,6 +1,6 @@
 import { Transform } from 'typed-streams';
 import { FileAttributesWithType } from './file-attributes-extractor.interface';
-import { inject, injectable } from './ioc-container';
+import { inject, injectable } from './ioc-container/lib';
 
 @injectable()
 export class FilterOnlyImageFiles extends Transform<FileAttributesWithType, FileAttributesWithType> {

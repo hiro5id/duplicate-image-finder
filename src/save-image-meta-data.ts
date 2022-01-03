@@ -1,8 +1,8 @@
 // noinspection ES6PreferShortImport
-import { injectable } from './ioc-container';
 import { isImageMetadata } from './is-image-metadata';
 import { ImageMetadata } from './image-metadata.interface';
 import { ValidationError } from './validation-error.interface';
+import { injectable } from './ioc-container/lib';
 
 @injectable()
 export class SaveImageMetaData {

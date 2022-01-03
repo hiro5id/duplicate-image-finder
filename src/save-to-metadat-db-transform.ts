@@ -1,8 +1,8 @@
 // noinspection ES6PreferShortImport
-import { inject, injectable } from './ioc-container';
 import { Transform } from 'typed-streams';
 import { FileAttributesWithTypeAndHash } from './file-attributes-extractor.interface';
 import { SaveImageMetaData } from './save-image-meta-data';
+import { inject, injectable } from './ioc-container/lib';
 
 @injectable()
 export class SaveToMetadatDbTransform extends Transform<FileAttributesWithTypeAndHash, FileAttributesWithTypeAndHash> {

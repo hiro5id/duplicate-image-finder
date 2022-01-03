@@ -1,7 +1,7 @@
 import { Transform } from 'typed-streams';
 import readdirp from 'readdirp';
 import { FileAttributes } from './file-attributes-extractor.interface';
-import { inject, injectable } from './ioc-container';
+import { inject, injectable } from './ioc-container/lib';
 
 @injectable()
 export class ExtractFileAttributes extends Transform<readdirp.EntryInfo, FileAttributes> {

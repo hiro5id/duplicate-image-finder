@@ -2,7 +2,7 @@ import { Transform } from 'typed-streams';
 import { FileAttributes, FileAttributesWithType } from './file-attributes-extractor.interface';
 import fs from 'fs';
 import FileType from 'file-type';
-import { inject, injectable } from './ioc-container';
+import { inject, injectable } from './ioc-container/lib';
 
 @injectable()
 export class ExtractFileType extends Transform<FileAttributes, FileAttributesWithType> {

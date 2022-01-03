@@ -1,6 +1,6 @@
 // noinspection ES6PreferShortImport
-import { injectable } from './ioc-container';
 import { ImageMetadata } from './image-metadata.interface';
+import { injectable } from './ioc-container/lib';
 
 @injectable()
 export abstract class ImageMetaDataSaver {
