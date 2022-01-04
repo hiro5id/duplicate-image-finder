@@ -34,7 +34,7 @@
     "clean": "npx rimraf .git/hooks/ && npx rimraf dist node_modules",
     "test": "jest --silent",
     "--prepublishOnly": "npm run clean && npm run install:prod && npm run build && npm run lint:check && npm run test && npm run prune:prod",
-    "preversion": "npm run clean && npm install && npm run build && npm run test",
+    "preversion": "npm run clean && npm run install:prod && npm run build && npm run lint:check && npm run test",
     "prettier": "prettier \"(src|test)/**/*.ts\"",
     "prettier:check": "npm run prettier -- -c",
     "prettier:fix": "npm run prettier -- --write",
