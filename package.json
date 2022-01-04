@@ -32,7 +32,7 @@
     "eslint": "eslint --ignore-path .eslintignore . --ext .ts",
     "start": "node --require source-map-support/register ./dist/src/cli.js",
     "clean": "rimraf dist node_modules",
-    "test": "`#mocha \"dist/test/**/*.js\"`",
+    "test": "jest --silent",
     "--prepublishOnly": "npm run clean && npm run install:prod && npm run build && npm run lint:check && `#npm run test` && npm run prune:prod",
     "preversion": "npm run build && npm run test",
     "prettier": "prettier \"(src|test)/**/*.ts\"",
@@ -67,7 +67,7 @@
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
     "@types/chai": "^4.2.14",
-    "@types/mocha": "^8.0.3",
+    "@types/jest": "^27.4.0",
     "@types/node": "^17.0.5",
     "@types/rimraf": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
@@ -78,10 +78,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-unicorn": "^40.0.0",
     "husky": "^7.0.4",
-    "mocha": "^8.2.1",
+    "jest": "^27.4.5",
     "np": "^7.6.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   }
