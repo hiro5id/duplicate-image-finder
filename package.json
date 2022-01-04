@@ -41,7 +41,7 @@
     "install:prod": "npm ci",
     "prune:prod": "npm prune --production",
     "refresh-package-locks": "npm run clean && find . -iname package-lock.json -delete && npm install",
-    "publish-to-npm": "echo \"ENSURE YOU ARE LOGGED IN TO NPM\" && np --no-verify",
+    "publish-to-npm": "echo \"ENSURE YOU ARE LOGGED IN TO NPM\" && HUSKY=0 && np",
     "dev-install-command": "npm link",
     "dev-uninstall-command": "npm unlink",
     "prepare": "husky install"
