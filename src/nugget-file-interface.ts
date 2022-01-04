@@ -41,14 +41,15 @@ export class NuggetFileInterface {
   private initFiles(filePath: string, reject: (reason?: any) => void) {
     try {
       const readStream = fs.createReadStream(filePath, { encoding: 'utf-8', autoClose: true });
-      const tempFile = `${filePath}-copy`;
-      const writeStream = fs.createWriteStream(tempFile, { encoding: 'utf-8', autoClose: true });
 
       const readInterface = readline.createInterface({
         input: readStream,
         //output: process.nu,
         console: false,
       });
+      const tempFile = `${filePath}-copy`;
+      const writeStream = fs.createWriteStream(tempFile, { encoding: 'utf-8', autoClose: true });
+
       return { readStream, tempFile, writeStream, readInterface };
     } catch (err) {
       reject(`Error: Error initializing files => ${(err as Error).message}`);
