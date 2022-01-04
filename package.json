@@ -31,7 +31,7 @@
     "lint:fix": "npm run prettier:fix",
     "eslint": "eslint --ignore-path .eslintignore . --ext .ts",
     "start": "node --require source-map-support/register ./dist/src/cli.js",
-    "clean": "rimraf dist node_modules",
+    "clean": "rimraf .git/hooks/ && rimraf dist node_modules",
     "test": "jest --silent",
     "--prepublishOnly": "npm run clean && npm run install:prod && npm run build && npm run lint:check && `#npm run test` && npm run prune:prod",
     "preversion": "npm run build && npm run test",
