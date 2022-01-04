@@ -46,7 +46,7 @@ export class NuggetFileInterface {
 
       const readInterface = readline.createInterface({
         input: readStream,
-        output: process.stdout,
+        //output: process.nu,
         console: false,
       });
       return { readStream, tempFile, writeStream, readInterface };
