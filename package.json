@@ -49,6 +49,9 @@
   "bin": {
     "iker": "./dist/src/cli.js"
   },
+  "dependencies-notes": {
+    "husky": "Used to automatically run GIT pre commit hooks. This MUST remain in the prod-dependency section, otherwise the publish-to-npm script will fail when it tries to bump versions and it needs to commit, but dev dependencies will have been cleaned up at this point"
+  },
   "dependencies": {
     "ajv": "^8.8.2",
     "ajv-errors": "^3.0.0",
