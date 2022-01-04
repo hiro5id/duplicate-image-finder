@@ -15,7 +15,7 @@
     "url": "git@github.com:hiro5id/duplicate-image-finder.git"
   },
   "files": [
-    "dist/**/*"
+    "dist/src/**/*"
   ],
   "keywords": [
     "image",
