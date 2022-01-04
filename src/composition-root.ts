@@ -7,6 +7,7 @@ import { ExtractFileAttributes } from './extract-file-attributes';
 import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
 import { SaveImageMetaData } from './save-image-meta-data';
 import { createSingletonContainer } from './ioc-container/create-singleton-container';
+import { NuggetFileInterface } from './nugget-file-interface';
 
 // const databaseType: 'mongo' | 'filesystem' = 'mongo';
 
@@ -22,6 +23,7 @@ export function compositionRoot(): interfaces.Container {
 
     containerCache.bind('objectMode').toConstantValue({ objectMode: true });
     containerCache.bind(CalculateDhashV1).toSelf().inTransientScope(); //ensure new instance every time
+    containerCache.bind(NuggetFileInterface).toSelf().inTransientScope(); //ensure new instance every time
     containerCache.bind(FilterOnlyImageFiles).toSelf().inTransientScope(); //ensure new instance every time
     containerCache.bind(ExtractFileType).toSelf().inTransientScope(); //ensure new instance every time
     containerCache.bind(ExtractFileAttributes).toSelf().inTransientScope(); //ensure new instance every time

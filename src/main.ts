@@ -1,6 +1,4 @@
-import path from 'path';
 import readdirp from 'readdirp';
-import os from 'os';
 import { Writable } from 'typed-streams';
 import FileType from 'file-type';
 import fs from 'fs';
@@ -11,6 +9,8 @@ import { CalculateDhashV1 } from './calculate-dhash-v1';
 //import { LoggerAdaptToConsole } from 'console-log-json';
 import { compositionRoot } from './composition-root';
 import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
+import { resolvePath } from './resolve-path';
+import { NuggetFileInterface } from './nugget-file-interface';
 
 //LoggerAdaptToConsole();
 /*
@@ -24,8 +24,13 @@ export class Main {
   async go() {
     const container = compositionRoot();
 
+    const testReadFile = resolvePath('./test.txt');
+    const nuggetFileInterface = container.get(NuggetFileInterface);
+    await nuggetFileInterface.writeOrUpdate({} as any, testReadFile);
+
     //todo: remove this
     container.get(SaveToMetadatDbTransform);
+    return;
 
     const inputPath = '~/Pictures';
     const startPath = resolvePath(inputPath);
@@ -49,21 +54,6 @@ export class Main {
     //   console.log(`${c.blue(entry.path)}`);
     // }
   }
-}
-
-function resolvePath(pathToCheck: string) {
-  let resolvedPath: string;
-  if (pathToCheck.startsWith('~')) {
-    const homedir = os.homedir();
-    resolvedPath = path.join(homedir, pathToCheck.replace('~', ''));
-  } else {
-    resolvedPath = pathToCheck;
-  }
-
-  resolvedPath = path.resolve(resolvedPath);
-  resolvedPath = path.normalize(resolvedPath);
-
-  return resolvedPath;
 }
 
 export class DummyWriter extends Writable<any> {

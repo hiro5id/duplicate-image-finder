@@ -9,6 +9,7 @@ main
     console.log('done');
   })
   .catch(err => {
-    console.error(`error ${err.message}`);
+    const errMessage = typeof err == 'string' ? err : err?.message;
+    console.error(`error => ${errMessage}`);
     process.exit(2);
   });
