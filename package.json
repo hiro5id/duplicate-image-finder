@@ -1,6 +1,6 @@
 {
   "name": "duplicate-image-finder",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "find duplicate images",
   "private": false,
   "types": "./dist/index.d.ts",
