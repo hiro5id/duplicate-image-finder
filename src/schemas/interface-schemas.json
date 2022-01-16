@@ -675,16 +675,20 @@
         "ValidationError": {
             "additionalProperties": false,
             "properties": {
-                "keyword": {
+                "message": {
                     "type": "string"
                 },
-                "message": {
+                "property": {
+                    "type": "string"
+                },
+                "ruleName": {
                     "type": "string"
                 }
             },
             "required": [
-                "keyword",
-                "message"
+                "message",
+                "property",
+                "ruleName"
             ],
             "type": "object"
         }

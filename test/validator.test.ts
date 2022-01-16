@@ -31,28 +31,34 @@ describe('test validator', function () {
     expect(result).eql(false);
     expect(errors).eql([
       {
-        keyword: 'minLength',
-        message: 'should NOT have fewer than 64 characters',
+        ruleName: 'minLength',
+        property: '/binaryHash',
+        message: 'must NOT have fewer than 64 characters',
       },
       {
-        keyword: 'type',
-        message: 'should be string',
+        ruleName: 'type',
+        property: '/fileMimeType',
+        message: 'must be string',
       },
       {
-        keyword: 'enum',
-        message: 'should be equal to one of the allowed values',
+        ruleName: 'enum',
+        property: '/fileMimeType',
+        message: 'must be equal to one of the allowed values',
       },
       {
-        keyword: 'minLength',
-        message: 'should NOT have fewer than 1 characters',
+        ruleName: 'minLength',
+        property: '/fileName',
+        message: 'must NOT have fewer than 1 characters',
       },
       {
-        keyword: 'minLength',
-        message: 'should NOT have fewer than 1 characters',
+        ruleName: 'minLength',
+        property: '/fullPath',
+        message: 'must NOT have fewer than 1 characters',
       },
       {
-        keyword: 'minLength',
-        message: 'should NOT have fewer than 1 characters',
+        ruleName: 'minLength',
+        property: '/pathInSearchDir',
+        message: 'must NOT have fewer than 1 characters',
       },
     ]);
   });

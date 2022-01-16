@@ -1,4 +1,5 @@
 export interface ValidationError {
-  keyword: string;
+  ruleName: string;
+  property: string;
   message: string;
 }

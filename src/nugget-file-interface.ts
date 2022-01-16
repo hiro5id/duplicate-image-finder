@@ -1,20 +1,44 @@
 import { FileAttributesWithTypeAndHash } from './file-attributes-extractor.interface';
 
 const readline = require('readline');
-import fs from 'fs';
+import fs, { WriteStream } from 'fs';
+// noinspection ES6PreferShortImport
 import { injectable } from './ioc-container/lib';
 
 const { EOL } = require('os');
 
 @injectable()
 export class NuggetFileInterface {
-  public async writeOrUpdate(_document: FileAttributesWithTypeAndHash, filePath: string): Promise<null> {
+  public async writeOrUpdate(inputDocuments: FileAttributesWithTypeAndHash[], filePath: string): Promise<null> {
+    if (inputDocuments == null) {
+      throw new Error(`inputDocuments must be defined`);
+    }
     return new Promise((resolve, reject) => {
-      const { readStream, tempFile, writeStream, readInterface } = this.initFiles(filePath, reject);
+      const { readStream, tempFile, writeStream, readInterface } = NuggetFileInterface.initFiles(filePath, reject);
 
-      readInterface.on('line', function (line: string) {
+      readInterface.on('line', (line: string) => {
+        // noinspection ExceptionCaughtLocallyJS
         try {
-          writeStream.write(`${line}${EOL}`);
+          // replace line if document matches
+          const matchedDocuments = inputDocuments.filter(docToWrite => {
+            if (NuggetFileInterface.documentMatches(docToWrite, line)) {
+              return docToWrite;
+            }
+          });
+
+          if (matchedDocuments.length > 1) {
+            // noinspection ExceptionCaughtLocallyJS
+            throw new Error(`unexpected to match more than one document for ${JSON.stringify(matchedDocuments[0])}`);
+          } else if (matchedDocuments.length == 1) {
+            //replace the line because it matched
+            this.writeDocuments([matchedDocuments[0]], writeStream);
+            //then remove from documents array so that it is not written at the end of file
+            const indexToRemove = inputDocuments.indexOf(matchedDocuments[0]);
+            inputDocuments.splice(indexToRemove, 1);
+          } else {
+            // just copy whatever was in source
+            writeStream.write(`${line}${EOL}`);
+          }
         } catch (err) {
           reject(`Error: Error writing stream to ${tempFile} => ${(err as Error).message}`);
           return;
@@ -23,7 +47,8 @@ export class NuggetFileInterface {
 
       readInterface.on('close', async () => {
         try {
-          writeStream.write(`END!!!!`);
+          // write any remaining documents to end of file
+          this.writeDocuments(inputDocuments, writeStream);
           writeStream.end();
           await this.renameFile(tempFile, filePath);
         } catch (err) {
@@ -38,7 +63,18 @@ export class NuggetFileInterface {
     });
   }
 
-  private initFiles(filePath: string, reject: (reason?: any) => void) {
+  private static documentMatches(docToWrite: FileAttributesWithTypeAndHash, line: string): boolean {
+    return line.includes(docToWrite.fullPath);
+  }
+
+  private writeDocuments(document: FileAttributesWithTypeAndHash[], writeStream: WriteStream) {
+    document.forEach(doc => {
+      const textDocument = JSON.stringify(doc);
+      writeStream.write(`${textDocument}${EOL}`);
+    });
+  }
+
+  private static initFiles(filePath: string, reject: (reason?: any) => void) {
     try {
       const readStream = fs.createReadStream(filePath, { encoding: 'utf-8', autoClose: true });
 
