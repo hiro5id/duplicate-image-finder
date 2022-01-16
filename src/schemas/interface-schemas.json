@@ -675,6 +675,25 @@
         "ValidationError": {
             "additionalProperties": false,
             "properties": {
+                "errors": {
+                    "items": {
+                        "$ref": "defs#/definitions/ValidationErrorDetail"
+                    },
+                    "type": "array"
+                },
+                "typeName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "errors",
+                "typeName"
+            ],
+            "type": "object"
+        },
+        "ValidationErrorDetail": {
+            "additionalProperties": false,
+            "properties": {
                 "message": {
                     "type": "string"
                 },

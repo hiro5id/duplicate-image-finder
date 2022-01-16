@@ -1,3 +1,4 @@
+// noinspection ES6PreferShortImport
 import { decorate, injectable, interfaces } from './ioc-container/lib';
 import { CalculateDhashV1 } from './calculate-dhash-v1';
 import NodeStream from 'stream';
@@ -7,7 +8,7 @@ import { ExtractFileAttributes } from './extract-file-attributes';
 import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
 import { SaveImageMetaData } from './save-image-meta-data';
 import { createSingletonContainer } from './ioc-container/create-singleton-container';
-import { NuggetFileInterface } from './nugget-file-interface';
+import { NuggetFileWriter } from './nugget-file-writer';
 
 // const databaseType: 'mongo' | 'filesystem' = 'mongo';
 
@@ -23,7 +24,7 @@ export function compositionRoot(): interfaces.Container {
 
     containerCache.bind('objectMode').toConstantValue({ objectMode: true });
     containerCache.bind(CalculateDhashV1).toSelf().inTransientScope(); //ensure new instance every time
-    containerCache.bind(NuggetFileInterface).toSelf().inTransientScope(); //ensure new instance every time
+    containerCache.bind(NuggetFileWriter).toSelf().inTransientScope(); //ensure new instance every time
     containerCache.bind(FilterOnlyImageFiles).toSelf().inTransientScope(); //ensure new instance every time
     containerCache.bind(ExtractFileType).toSelf().inTransientScope(); //ensure new instance every time
     containerCache.bind(ExtractFileAttributes).toSelf().inTransientScope(); //ensure new instance every time

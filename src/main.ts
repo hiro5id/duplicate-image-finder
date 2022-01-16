@@ -10,7 +10,7 @@ import { CalculateDhashV1 } from './calculate-dhash-v1';
 import { compositionRoot } from './composition-root';
 import { SaveToMetadatDbTransform } from './save-to-metadat-db-transform';
 import { resolvePath } from './resolve-path';
-import { NuggetFileInterface } from './nugget-file-interface';
+import { NuggetFileWriter } from './nugget-file-writer';
 
 //LoggerAdaptToConsole();
 /*
@@ -25,7 +25,7 @@ export class Main {
     const container = compositionRoot();
 
     const testReadFile = resolvePath('./test.txt');
-    const nuggetFileInterface = container.get(NuggetFileInterface);
+    const nuggetFileInterface = container.get(NuggetFileWriter);
     await nuggetFileInterface.writeOrUpdate({} as any, testReadFile);
 
     //todo: remove this

@@ -3,7 +3,7 @@
  * @param prop - the object for which we want to get the property name
  * @param value - the value of the object for which we want the property name
  */
-export function getPropName(prop: any, value: any) {
+export function getPropName(prop: any, value: any): string {
   for (let i in prop) {
     // noinspection JSUnfilteredForInLoop
     if (prop[i] == value) {
@@ -11,5 +11,5 @@ export function getPropName(prop: any, value: any) {
       return i;
     }
   }
-  return false;
+  return '-unknown-';
 }

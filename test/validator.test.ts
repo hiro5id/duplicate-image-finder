@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { ImageMetadata } from '../src/image-metadata.interface';
 import { isImageMetadata } from '../src/is-image-metadata';
+import { ValidationError } from '../src/validation-error.interface';
 
 describe('test validator', function () {
   it('is valid', function () {
@@ -11,7 +12,7 @@ describe('test validator', function () {
       fullPath: '/the/full/path',
       binaryHash: '1012100011111100111111001111110001111100001011000001101111001011',
     };
-    let errs: [] = [];
+    const errs: ValidationError = {} as any;
     isImageMetadata(testData, errs);
     console.log('errors', { errs: errs });
     //expect(result).eql(true);
@@ -25,11 +26,11 @@ describe('test validator', function () {
       fullPath: '',
       binaryHash: '',
     };
-    const errors: any[] = [];
+    const errors: ValidationError = {} as any;
     const result = isImageMetadata(testData, errors);
 
     expect(result).eql(false);
-    expect(errors).eql([
+    expect(errors.errors).eql([
       {
         ruleName: 'minLength',
         property: '/binaryHash',

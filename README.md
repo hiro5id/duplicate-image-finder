@@ -7,8 +7,9 @@
 
 #### Notes 2022-01-15:
 * ~~I'm implementing the functionality to support writing multiple documents.~~
-* `TODO`: Genericify the type validation, and make use of it in `NuggetFileInterface.writeOrUpdate` to verify the `inputDocuments` and `filePath` parameters
+* ~~Genericify the type validation, and make use of it in `NuggetFileInterface.writeOrUpdate` to verify the `inputDocuments` and `filePath` parameters~~
 * `TODO`: Implement a command line interface and test writing to file
+* `TODO`: Make temp file be written to universal croll platform OS temp location
 
 
 #### Notes 2022-01-04:
