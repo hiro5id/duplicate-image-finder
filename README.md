@@ -4,6 +4,10 @@
 
 - To work well over unlimited size folders and sub folders including network attached drives.  That means retry logic where necessary in case of intermittent disconnections.
 
+##### Use Cases
+
+- Given an image find all similar images.  Example when I want to find a high quality version of a low quality version of it or a screen shot.
+
 #### Notes 2022-01-15:
 
 * ~~I'm implementing the functionality to support writing multiple documents.~~
